@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from "express";
-import { IGenericErrorMessage } from "../../interface/IGenericErrorMessage";
 import ApiError from "../../errors/ApiError";
+import { IGenericErrorMessage } from "../../interface/IGenericErrorMessage";
 
 export const globalErrorHandler: ErrorRequestHandler = (
   err,
@@ -9,7 +9,7 @@ export const globalErrorHandler: ErrorRequestHandler = (
   next
 ) => {
   let statusCode = 500;
-  let message = "Something Went Wrong";
+  let message = "Something Went Wrong! 😭";
   let errorMessages: IGenericErrorMessage[] = [];
 
   if (err instanceof ApiError) {

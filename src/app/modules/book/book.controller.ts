@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { catchAsync } from "../../../shared/catchAsync";
-import { BookService } from "./book.service";
-import { IBook } from "./book.interface";
 import httpStatus from "http-status";
+import { catchAsync } from "../../../shared/catchAsync";
 import { sendResponse } from "../../../shared/sendResponse";
+import { IBook } from "./book.interface";
+import { BookService } from "./book.service";
 
 const getAllBooks = catchAsync(async (req: Request, res: Response) => {
   const result = await BookService.getAllBooks();
   sendResponse<IBook[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Books retrieved Successfully",
+    message: "Successfully retrieved books 😁",
     data: result,
   });
 });
@@ -20,7 +20,7 @@ const getLastTenBooks = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IBook[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Latest Books retrieved Successfully",
+    message: "Successfully retrieved latest books 😁",
     data: result,
   });
 });
@@ -31,26 +31,25 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IBook>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Book retrieved Successfully",
+    message: "Successfully retrieved a book 😁",
     data: result,
   });
 });
 
 const addBook = catchAsync(async (req: Request, res: Response) => {
-  const { ...bookinfo } = req.body;
+  const { ...bookInfo } = req.body;
 
-  const result = await BookService.addBook(bookinfo);
+  const result = await BookService.addBook(bookInfo);
   sendResponse<IBook>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Book Added Successfully",
+    message: "Successfully added a book 😁",
     data: result,
   });
 });
 
 const addComment = catchAsync(async (req: Request, res: Response) => {
   const comment = req.body.comment;
-  //   console.log(comment);
 
   const id = req.params.id;
 
@@ -58,7 +57,7 @@ const addComment = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Comment Added Successfully",
+    message: "Successfully added a comment 😁",
     data: result,
   });
 });
@@ -71,7 +70,7 @@ const editBook = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IBook>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Book Updated Successfully",
+    message: "Successfully update a book 😁",
     data: result,
   });
 });
@@ -82,7 +81,7 @@ const deleteBook = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IBook>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Book Deleted Successfully",
+    message: "Successfully delete a book 😁",
     data: result,
   });
 });
