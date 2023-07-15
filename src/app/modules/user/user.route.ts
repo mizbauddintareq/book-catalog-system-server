@@ -7,9 +7,9 @@ router.post("/signup", UserController.createUser);
 router.post("/login", UserController.loginUser);
 
 router.post("/wishlist/:id", UserController.addToWishlist);
-router.post("/readlist/:id", UserController.addToReadList);
+router.post("/readingList/:id", UserController.addToReadingList);
 
-router.patch("/readlist/:id", UserController.updateReadlist);
+router.patch("/readingList/:id", UserController.updateReadingStatus);
 
 router.get("/:id", UserController.getSingleUser);
 
