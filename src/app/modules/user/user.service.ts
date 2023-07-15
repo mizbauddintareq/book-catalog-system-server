@@ -16,17 +16,14 @@ const loginUser = async (payload: IUser) => {
   const isUserExists = await user.isUserExists(email);
 
   if (!isUserExists) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found 🙄");
   }
-
-  // console.log(isUserExists.password);
-  // console.log(password);
 
   if (
     isUserExists.password &&
     !(await user.isPasswordMatched(password, isUserExists.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, "Password not matched");
+    throw new ApiError(httpStatus.UNAUTHORIZED, "Password not matched 🙄");
   }
 
   return isUserExists;
@@ -45,7 +42,7 @@ const addToWishlist = async (id: string, book: IRead) => {
   return result;
 };
 
-const addToReadList = async (id: string, payload: string) => {
+const addToReadingList = async (id: string, payload: string) => {
   const result = await User.findByIdAndUpdate(
     id,
     {
@@ -53,18 +50,17 @@ const addToReadList = async (id: string, payload: string) => {
     },
     { new: true }
   );
-  // console.log(result);
 
   return result;
 };
 
-const updateReadlist = async (userID: string, payload: IRead) => {
+const updateReadingStatus = async (userID: string, payload: IRead) => {
   const user = await User.findById(userID);
   const { id, isComplete } = payload;
 
-  const readlist = user?.readList;
+  const readList = user?.readList;
 
-  const myBook = readlist?.find((book) => book.id === id);
+  const myBook = readList?.find((book) => book.id === id);
   myBook!.isComplete = true;
 
   await user?.save();
@@ -80,6 +76,6 @@ export const UserService = {
   loginUser,
   addToWishlist,
   getSingleUser,
-  addToReadList,
-  updateReadlist,
+  addToReadingList,
+  updateReadingStatus,
 };
