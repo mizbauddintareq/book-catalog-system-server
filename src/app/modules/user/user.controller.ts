@@ -70,7 +70,7 @@ const updateReadingStatus = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Rating Updated Successfully",
+    message: "Successfully update a rating 😁",
     data: result,
   });
 });
@@ -82,7 +82,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "User retrieved Successfully",
+    message: "Successfully retrieved a user 😁",
     data: result,
   });
 });
